@@ -20,18 +20,18 @@ const orderService = require('./orderService');
     // var results3 = await orderService.update(orderToUpdate);
     // console.log(results3);
    
-    console.log('*********** before *********** ');
-    var results1 = await customerService.get();
-    console.log(results1);
-    console.log('*********** after *********** ');
+    // console.log('*********** before *********** ');
+    // var results1 = await customerService.get();
+    // console.log(results1);
+    // console.log('*********** after *********** ');
+
+    // console.log('*********** before *********** ');
+    // var results1 = await orderService.get();
+    // console.log(results1);
+    // console.log('*********** after *********** ');
 
     console.log('*********** before *********** ');
-    var results1 = await orderService.get();
-    console.log(results1);
-    console.log('*********** after *********** ');
-
-    console.log('*********** before *********** ');
-    var results2 = await customerService.getOrders(2);
+    var results2 = await customerService.getOrders(1);
     console.log(results2);    
     console.log('*********** after *********** ');    
 

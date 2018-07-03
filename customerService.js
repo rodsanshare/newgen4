@@ -24,31 +24,27 @@ const orderModel = require('./order')(sequelize, Sequelize);
 customerModel.hasMany(orderModel);
 
 sequelize
-.authenticate()
-.then(() => {
-    console.log('Connection has been established successfully.');
-})
-.catch(err => {
-    console.error('Unable to connect to the database:', err);
-});
+    .authenticate()
+    .then(() => {
+        console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+    });
 
 exports.get = function () {
-    return new Promise(function (resolve, reject) {
-        customerModel.findAll().then(cus => {
-            resolve(cus[0].customername)
-        });
+    return customerModel.findAll().then(cus => {
+        cus[0].customername
     });
 };
 
 exports.getOrders = function (id) {
-    return new Promise(function (resolve, reject) {
-        customerModel.findAll({            
-            raw: true,
-            include: [{
-                model: orderModel,
-                where: { customer_idcustomer: id }                
-            }],
+    return customerModel.findAll({
+        raw: true,
+        include: [{
+            model: orderModel,
+            where: { customer_idcustomer: id }
+        }],
 
-        }).then(r => { resolve(r) });
-    });
+    }).then(r => r);
 };
